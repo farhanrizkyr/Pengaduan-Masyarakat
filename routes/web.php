@@ -46,3 +46,4 @@ Route::post('apps-user/register/',[RegisterUserController::class,'post_register'
 Route::get('apps-user/profile',[PengaturanUserController::class,'index']);
 Route::post('apps-user/update-avatar/{id}',[PengaturanUserController::class,'update']);
 Route::get('apps-user/edit-profile',[PengaturanUserController::class,'edit']);
+Route::post('apps-user/proses-edit-profile/{id}',[PengaturanUserController::class,'proses_edit']);

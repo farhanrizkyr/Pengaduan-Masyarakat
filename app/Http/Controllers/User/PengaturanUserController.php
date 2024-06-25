@@ -89,6 +89,18 @@ class PengaturanUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+     public function proses_edit($id)
+     {
+         request()->validate([
+         'name'=>'required',
+         'username'=>'required',
+         'email'=>'required',
+         ]);
+
+         User::find($id)->update(request()->all());
+         return redirect('apps-user/edit-profile')->with('status','Profile Berhasil Di Ubah');
+     }
     public function destroy(string $id)
     {
         //
