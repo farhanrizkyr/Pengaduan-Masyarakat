@@ -52,7 +52,7 @@
     
                       <div class="grup">
                         <label for="">Tanggal Lahir</label>
-                        <input type="text" name="username" class="form-control" value="{{Auth::user()->tl}}">
+                        <input type="date" name="tl" class="form-control" value="{{Auth::user()->tl}}">
                       </div>
     
                       <div class="grup">

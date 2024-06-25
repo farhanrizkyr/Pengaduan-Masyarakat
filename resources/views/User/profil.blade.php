@@ -11,7 +11,7 @@
 
             <img src="{{Auth::user()->avatar()}}" alt="Profile" class="rounded-circle">
             <h2>{{Auth::user()->name}}</h2>
-
+              <button data-bs-toggle="modal" data-bs-target="#avatar" class="btn btn-outline-primary btn-sm mt-3"><i class="bi bi-floppy"></i> Change Avatar</button>
             <div class="social-links mt-2">
               
             </div>
@@ -48,37 +48,52 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  <div class="col-lg-9 col-md-8">{{Auth::user()->name}}</div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Company</div>
-                  <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                  <div class="col-lg-3 col-md-4 label">Gender</div>
+                  @if (Auth::user()->geder=="0")   
+                  <div class="col-lg-9 col-md-8"> L- (Laki-Laki)</div>
+                  @endif
+
+                  @if (Auth::user()->geder=="1")   
+                  <div class="col-lg-9 col-md-8"> P- (Perempuan)</div>
+                  @endif
+
+                  
+                </div>
+
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Tempat</div>
+                  <div class="col-lg-9 col-md-8">{{Auth::user()->tempat}}</div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Job</div>
-                  <div class="col-lg-9 col-md-8">Web Designer</div>
-                </div>
+                  <div class="col-lg-3 col-md-4 label">Tanggal</div>
+                   @if (Auth::user()->tl==null)
+                   <div class="col-lg-9 col-md-8"></div>
+                   @endif
 
+                   @if (Auth::user()->tl)
+                   <div class="col-lg-9 col-md-8">{{\Carbon\carbon::parse(Auth::user()->tl)->isoformat('DDD, MMMM Y')}}</div>    
+                   @endif
+                </div>
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Country</div>
-                  <div class="col-lg-9 col-md-8">USA</div>
+                  <div class="col-lg-3 col-md-4 label">Username</div>
+                  <div class="col-lg-9 col-md-8">{{Auth::user()->username}}</div>
                 </div>
 
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Address</div>
-                  <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
-                </div>
-
+         
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                  <div class="col-lg-9 col-md-8">{{Auth::user()->hp}}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  <div class="col-lg-9 col-md-8">{{Auth::user()->email}}</div>
                 </div>
 
               </div>            
@@ -110,4 +125,36 @@
     </div>
   </div>
   <!-- End Modal Bio -->
+
+  <!-- Modal Avatar -->
+<div class="modal fade" id="avatar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Avatar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form action="/apps-user/update-avatar/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
+        @csrf
+        @if (Auth::user()->avatar)
+          <input type="hidden" name="avatar_lama" value="{{Auth::user()->avatar}}">  
+        @endif
+        <div class="grup">
+          <label for="">Pilih Avatar</label>
+          <input type="file" name="avatar" class="form-control">
+          @error('avatar')
+              <p class="text-danger">{{$message}}</p>
+          @enderror
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-floppy"></i> Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+  <!-- End Modal Avatar-->
 @endsection
