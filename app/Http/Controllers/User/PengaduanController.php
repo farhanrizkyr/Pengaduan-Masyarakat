@@ -147,4 +147,36 @@ class PengaduanController extends Controller
 
        return redirect('/apps-user/list-laporan-pengaduan')->with('pesan','Data Pengaduan Berhasil Di Hapus');
     }
-}
+
+
+    public function history()
+    {
+        $history=Pengaduan::where('user_id',auth()->user()->id)->where('status',['2'])->reorder('created_at', 'desc')->get();
+        return view('User.history_pengaduan',compact('history'));
+    }
+
+
+          public  function ajukan($id)
+          {
+             Pengaduan::find($id)->update([
+              'status'=>1,
+             ]); 
+
+
+             return redirect('/apps-user/history-pengaduan')->with('pesan','Pengaduan berhasil di ajukan kembali');
+          }
+     
+
+          public function history_delete($id)
+          {
+            $data=Pengaduan::find($id);
+            $data->delete();
+            if ($data->gambar <> '') {
+            unlink(public_path('Bukti_Laporan').'/'.$data->gambar);
+            }  
+            return redirect('/apps-user/history-pengaduan')->with('pesan','Pengaduan berhasil di Hapus');
+          }
+       
+        
+    }
+

@@ -19,7 +19,7 @@
           </a>
         </li>
         <li>
-          <a href="/appsuser/History-pengaduan/">
+          <a href="/apps-user/history-pengaduan/">
             <i class="bi bi-circle"></i><span>History Laporan</span>
           </a>
         </li>
