@@ -56,3 +56,6 @@ Route::post('apps-user/proses-pengajuan-masyarakat/',[PengaduanController::class
 Route::delete('apps-user/delete-laporan/{id}',[PengaduanController::class,'destroy']);
 Route::get('apps-user/edit-pengaduan/{id}',[PengaduanController::class,'edit']);
 Route::post('apps-user/update-pengajuan-masyarakat/{id}',[PengaduanController::class,'update']);
+Route::get('apps-user/history-pengaduan/',[PengaduanController::class,'history']);
+Route::put('apps-user/ajukan-laporan-kembali/{id}',[PengaduanController::class,'ajukan']);
+Route::delete('apps-user/histoty-delete/{id}',[PengaduanController::class,'history_delete']);
