@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengajuan_konsultasi', function (Blueprint $table) {
+        Schema::create('pengajuan_masalah', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
             $table->string('gambar');
-            $table->longText('pengajuan');
+            $table->longText('pengaduan');
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Petugas::class)->nullable();
             $table->string('status')->default('0');

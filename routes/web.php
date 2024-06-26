@@ -53,3 +53,6 @@ Route::post('apps-user/proses-edit-profile/{id}',[PengaturanUserController::clas
 Route::get('apps-user/list-laporan-pengaduan/',[PengaduanController::class,'index']);
 Route::get('apps-user/buat-laporan-pengaduan/',[PengaduanController::class,'create']);
 Route::post('apps-user/proses-pengajuan-masyarakat/',[PengaduanController::class,'store']);
+Route::delete('apps-user/delete-laporan/{id}',[PengaduanController::class,'destroy']);
+Route::get('apps-user/edit-pengaduan/{id}',[PengaduanController::class,'edit']);
+Route::post('apps-user/update-pengajuan-masyarakat/{id}',[PengaduanController::class,'update']);

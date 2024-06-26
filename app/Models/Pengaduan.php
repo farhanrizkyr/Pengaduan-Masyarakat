@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pengaduan extends Model
 {
     protected $guarded=['id'];
-    protected $table='pengajuan_konsultasi';
+    protected $table='pengajuan_masalah';
 
 
     public function user()
