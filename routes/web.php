@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Petugas\RegisterPetugasController;
 use App\Http\Controllers\User\HomeUserController;
 use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\PengaduanController;
 use App\Http\Controllers\User\PengaturanUserController;
 use App\Http\Controllers\User\RegisterUserController;
 
@@ -47,3 +48,8 @@ Route::get('apps-user/profile',[PengaturanUserController::class,'index']);
 Route::post('apps-user/update-avatar/{id}',[PengaturanUserController::class,'update']);
 Route::get('apps-user/edit-profile',[PengaturanUserController::class,'edit']);
 Route::post('apps-user/proses-edit-profile/{id}',[PengaturanUserController::class,'proses_edit']);
+
+
+Route::get('apps-user/list-laporan-pengaduan/',[PengaduanController::class,'index']);
+Route::get('apps-user/buat-laporan-pengaduan/',[PengaduanController::class,'create']);
+Route::post('apps-user/proses-pengajuan-masyarakat/',[PengaduanController::class,'store']);

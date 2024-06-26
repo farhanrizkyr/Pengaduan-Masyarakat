@@ -14,7 +14,7 @@
       </a>
       <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="/apps-user/buat-laporan-pengaduan/">
+          <a href="/apps-user/list-laporan-pengaduan/">
             <i class="bi bi-circle"></i><span>Buat Laporan</span>
           </a>
         </li>

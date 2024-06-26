@@ -44,7 +44,11 @@ class User extends Authenticatable
           return asset('AvatarUser/avatar.jpg');
         } else {
             return asset('AvatarUser/'.$this->avatar);
-        }
-        
+        }     
+    }
+
+    public function users()
+    {
+      return $this->hasMany(Pengaduan::class);  
     }
 }
