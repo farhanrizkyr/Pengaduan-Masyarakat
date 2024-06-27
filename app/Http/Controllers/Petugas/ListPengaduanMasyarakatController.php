@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 
 class ListPengaduanMasyarakatController extends Controller
@@ -12,7 +13,8 @@ class ListPengaduanMasyarakatController extends Controller
      */
     public function index()
     {
-        //
+        $pengaduans=Pengaduan::latest()->get();
+       return view('Petugas.list_pengaduan',compact('pengaduans'));
     }
 
     /**
