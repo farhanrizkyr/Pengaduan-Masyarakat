@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RegisterAdminController;
+use App\Http\Controllers\Petugas\HomePetugasController;
 use App\Http\Controllers\Petugas\RegisterPetugasController;
 use App\Http\Controllers\User\HomeUserController;
 use App\Http\Controllers\User\LoginController;
@@ -59,3 +60,5 @@ Route::post('apps-user/update-pengajuan-masyarakat/{id}',[PengaduanController::c
 Route::get('apps-user/history-pengaduan/',[PengaduanController::class,'history']);
 Route::put('apps-user/ajukan-laporan-kembali/{id}',[PengaduanController::class,'ajukan']);
 Route::delete('apps-user/histoty-delete/{id}',[PengaduanController::class,'history_delete']);
+
+Route::get('apps-petugas/petugas/dashboard',[HomePetugasController::class,'index']);
