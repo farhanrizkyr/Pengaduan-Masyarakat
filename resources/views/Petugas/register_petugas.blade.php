@@ -61,19 +61,6 @@
           </div>
 
           <div class="grup">
-
-            <label for="">Gender</label>
-            <select class="form-control" name="jenis_kelamin">
-              <option value="">Pilih</option>
-              <option value="0" @if (old('jnis_kelamin')=="0" )selected @endif>Laki-Laki</option>
-              <option value="1" @if (old('jenis_kelamin')=="1")selected  @endif>Perempuan</option>
-            </select>
-            @error('jenis_kelamin')
-            <p class="text-danger">{{$message}}</p>
-        @enderror
-          </div>
-
-          <div class="grup">
             <label for="">e-mail</label>
             <input type="text" name="email" class="form-control" value="{{old('email')}}">
             @error('email')
