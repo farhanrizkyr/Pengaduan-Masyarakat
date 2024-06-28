@@ -5,15 +5,20 @@ namespace App\Http\Controllers\Petugas;
 use App\Http\Controllers\Controller;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ListPengaduanMasyarakatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+     {
+        $this->middleware('auth:petugas');
+     }
     public function index()
     {
-        $pengaduans=Pengaduan::latest()->get();
+        $pengaduans=Pengaduan::latest()->wherein('status',['0','1'])->get();
        return view('Petugas.list_pengaduan',compact('pengaduans'));
     }
 
@@ -28,9 +33,16 @@ class ListPengaduanMasyarakatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        Pengaduan::find($id)->update([
+        'catatan'=>request()->catatan,
+        'status'=>request()->status,
+        'petugas_id'=>Auth::user()->id
+
+        ]);
+
+        return redirect('/apps-petugas/list-laporan-pengaduan-masyarakat/')->with('pesan','Pengaduan Berhasil Di Tanggapi ');
     }
 
     /**
@@ -44,9 +56,10 @@ class ListPengaduanMasyarakatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $data=Pengaduan::find($id);
+        return  view('Petugas.jawab',compact('data'));
     }
 
     /**
@@ -60,6 +73,14 @@ class ListPengaduanMasyarakatController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+
+     public function history()
+
+     {
+        $pengaduans=Pengaduan::where('status','2')->latest()->get();
+        return view('Petugas.list_pengaduan',compact('pengaduans'));
+     }
     public function destroy(string $id)
     {
         //

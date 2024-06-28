@@ -1,5 +1,5 @@
 @extends('Components_User.Layout_User')
-@section('title','List Pengaduan masyarakat')
+@section('title','List  History Pengaduan masyarakat')
 @section('main')
 
 <div class="pagetitle">
@@ -43,7 +43,7 @@
           <td>{{\Carbon\carbon::parse($aduan->created_at)->isoformat('dddd,DD MMMM Y')}}</td>
           <td>
             @if ($aduan->status=="2")
-                <span class="badge bg-success">Selesai Diprosess</span>
+            <span class="badge badge-success">Selesai Diprosess</span>
             @endif
 
             @if ($aduan->status=="1")
@@ -59,7 +59,7 @@
             @endif
           </td>
           <td> {!! $aduan->catatan !!}</td>
-          <td>Yaya</td>
+          <td>{{optional($aduan->petugas)->fullname()}}</td>
           <td>
             <form action="/apps-user/ajukan-laporan-kembali/{{$aduan->id}}" class="d-inline" method="post">
               @csrf

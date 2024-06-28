@@ -15,12 +15,12 @@
       <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
           <a href="/apps-petugas/list-laporan-pengaduan-masyarakat/">
-            <i class="bi bi-circle"></i><span>Buat Laporan</span>
+            <i class="bi bi-circle"></i><span>List Laporan Pengaduan</span>
           </a>
         </li>
         <li>
-          <a href="/apps-user/history-pengaduan/">
-            <i class="bi bi-circle"></i><span>History Laporan</span>
+          <a href="/apps-petugas/history-pengaduan-masyarakat">
+            <i class="bi bi-circle"></i><span> List History Laporan</span>
           </a>
         </li>
       </ul>

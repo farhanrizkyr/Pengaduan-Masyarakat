@@ -1,5 +1,5 @@
 @extends('Components_Petugas.Layout_Petugas')
-@section('title','List Laporan Pengaduan Masyarakat')
+@section('title','List Hitory Pengaduan Masyarakat')
 @section('main')
 
 @if (Session::get('pesan'))
@@ -22,7 +22,6 @@
             <th>Pengaduan</th>
             <th>Catatan Petugas</th>
             <th>Petugas</th>
-            <th>Aksi</th>
         </tr>
        </thead>
 
@@ -58,9 +57,7 @@
             @endif
           </td>
           <td>{{optional($aduan->petugas)->fullname()}}</td>
-          <td>
-            <a class="btn btn-info" href="/apps-petugas/jawab-pengaduan/{{$aduan->id}}"><i class="bi bi-chat"></i> </a>
-          </td>
+          
         </tr>
         @endforeach
        </tbody>

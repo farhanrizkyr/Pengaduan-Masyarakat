@@ -15,4 +15,12 @@ class Pengaduan extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    
+    public function petugas()
+    {
+        return $this->belongsTo(Petugas::class,'petugas_id');
+    }
+
+
 }
