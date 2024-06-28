@@ -15,7 +15,6 @@
         <tr>
             <th>No</th>
             <th>Judul Pengaduan</th>
-            <th>Status</th>
             <th>Nama Pelapor</th>
             <th>Tanggal Pengaduan</th>
             <th>Status</th>
@@ -31,12 +30,6 @@
         <tr>
           <th>{{$loop->iteration}}</th>
           <td>{{$aduan->judul}}</td>
-          <td>
-            @if ($aduan->status=="2")
-            <span class="badge badge-success">Selesai Diprosess</span>
-            @endif
-
-          </td>
           <td>{{$aduan->user->name}}</td>
           <td>{{\Carbon\carbon::parse($aduan->created_at)->isoformat('dddd,DD MMMM Y')}}</td>
           <td><img src="{{url('Bukti_Laporan',$aduan->gambar)}}" alt=""></td>
