@@ -50,17 +50,32 @@ class PengaturanprofilPetugasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        return view('Petugas.editprofil');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update($id)
     {
-        //
+        request()->validate([
+         'name'=>'required',
+         'degree'=>'required',
+         'username'=>'required',
+         'email'=>'required',
+        ]);
+
+        Petugas::find($id)->update([
+         'name'=>request()->name,
+         'jenis_kelamin'=>request()->jenis_kelamin,
+         'username'=>request()->username,
+         'degree'=>request()->degree,
+         'email'=>request()->email,
+        ]);
+
+        return redirect('/apps-petugas/edit-profile')->with('status','Data Berhasil Di Update');
     }
 
     /**
