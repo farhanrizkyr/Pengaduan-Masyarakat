@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Petugas\HomePetugasController;
 use App\Http\Controllers\Petugas\ListPengaduanMasyarakatController;
+use App\Http\Controllers\Petugas\LoginPetugasController;
 use App\Http\Controllers\Petugas\RegisterPetugasController;
 use App\Http\Controllers\User\HomeUserController;
 use App\Http\Controllers\User\LoginController;
@@ -65,3 +66,10 @@ Route::delete('apps-user/histoty-delete/{id}',[PengaduanController::class,'histo
 Route::get('apps-petugas/petugas/dashboard',[HomePetugasController::class,'index']);
 
 Route::get('apps-petugas/list-laporan-pengaduan-masyarakat',[ListPengaduanMasyarakatController::class,'index']);
+Route::get('apps-petugas/jawab-pengaduan/{id}',[ListPengaduanMasyarakatController::class,'edit']);
+Route::post('apps-petugas/proses-jawab-pengaduan/{id}',[ListPengaduanMasyarakatController::class,'store']);
+Route::get('apps-petugas/history-pengaduan-masyarakat',[ListPengaduanMasyarakatController::class,'history']);
+
+Route::get('apps-petugas/login',[LoginPetugasController::class,'login_petugas'])->name('petugas.login');
+Route::post('apps-petugas/login',[LoginPetugasController::class,'proses_login_petugas'])->name('proses-login-petugas');
+Route::get('apps-petugas/logout',[LoginPetugasController::class,'keluar_petugas'])->name('logout-petugas');

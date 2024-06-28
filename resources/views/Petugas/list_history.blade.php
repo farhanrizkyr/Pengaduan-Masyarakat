@@ -1,5 +1,5 @@
 @extends('Components_Petugas.Layout_Petugas')
-@section('title','List Laporan Pengaduan Masyarakat')
+@section('title','List Hitory Pengaduan Masyarakat')
 @section('main')
 
 @if (Session::get('pesan'))
@@ -15,6 +15,7 @@
         <tr>
             <th>No</th>
             <th>Judul Pengaduan</th>
+            <th>Status</th>
             <th>Nama Pelapor</th>
             <th>Tanggal Pengaduan</th>
             <th>Status</th>
@@ -22,7 +23,6 @@
             <th>Pengaduan</th>
             <th>Catatan Petugas</th>
             <th>Petugas</th>
-            <th>Aksi</th>
         </tr>
        </thead>
 
@@ -31,6 +31,12 @@
         <tr>
           <th>{{$loop->iteration}}</th>
           <td>{{$aduan->judul}}</td>
+          <td>
+            @if ($aduan->status=="2")
+            <span class="badge badge-success">Selesai Diprosess</span>
+            @endif
+
+          </td>
           <td>{{$aduan->user->name}}</td>
           <td>{{\Carbon\carbon::parse($aduan->created_at)->isoformat('dddd,DD MMMM Y')}}</td>
           <td>
@@ -58,9 +64,7 @@
             @endif
           </td>
           <td>{{optional($aduan->petugas)->fullname()}}</td>
-          <td>
-            <a class="btn btn-info" href="/apps-petugas/jawab-pengaduan/{{$aduan->id}}"><i class="bi bi-chat"></i> </a>
-          </td>
+          
         </tr>
         @endforeach
        </tbody>

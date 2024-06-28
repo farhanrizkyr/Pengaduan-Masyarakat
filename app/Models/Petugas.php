@@ -18,6 +18,7 @@ class Petugas extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded=['id'];
+    protected $guard = 'petugas';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,5 +43,21 @@ class Petugas extends Authenticatable
 
     {
         return $this->name.'. '.$this->degree;
+    }
+
+
+    public function jawab()
+    {
+        return $this->hasMany(Pengaduan::class);
+    }
+
+    
+    public function avatar()
+    {
+        if (!$this->avatar) {
+          return asset('AvatarUser/avatar.jpg');
+        } else {
+            return asset('AvatarUser/'.$this->avatar);
+        }     
     }
 }
