@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Petugas\HomePetugasController;
 use App\Http\Controllers\Petugas\ListPengaduanMasyarakatController;
 use App\Http\Controllers\Petugas\LoginPetugasController;
+use App\Http\Controllers\Petugas\PengaturanprofilPetugasController;
 use App\Http\Controllers\Petugas\RegisterPetugasController;
 use App\Http\Controllers\User\HomeUserController;
 use App\Http\Controllers\User\LoginController;
@@ -73,3 +74,6 @@ Route::get('apps-petugas/history-pengaduan-masyarakat',[ListPengaduanMasyarakatC
 Route::get('apps-petugas/login',[LoginPetugasController::class,'login_petugas'])->name('petugas.login');
 Route::post('apps-petugas/login',[LoginPetugasController::class,'proses_login_petugas'])->name('proses-login-petugas');
 Route::get('apps-petugas/logout',[LoginPetugasController::class,'keluar_petugas'])->name('logout-petugas');
+
+Route::get('apps-petugas/profile',[PengaturanprofilPetugasController::class,'index']);
+Route::post('apps-petugas/update-avatar/{id}',[PengaturanprofilPetugasController::class,'avatar']);
