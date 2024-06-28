@@ -71,12 +71,12 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
            <img src="{{Auth::user()->avatar()}}" alt="" class="rounded-circle"
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->name}}</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->fullname()}}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{Auth::user()->name}}</h6>
+              <h6>{{Auth::user()->fullname()}}</h6>
               
             </li>
             <li>
@@ -84,7 +84,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/apps-user/profile">
+              <a class="dropdown-item d-flex align-items-center" href="/apps-petugas/profile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -94,7 +94,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/apps-user/edit-profile">
+              <a class="dropdown-item d-flex align-items-center" href="/apps-petugas/edit-profile">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
