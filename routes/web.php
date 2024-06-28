@@ -77,3 +77,5 @@ Route::get('apps-petugas/logout',[LoginPetugasController::class,'keluar_petugas'
 
 Route::get('apps-petugas/profile',[PengaturanprofilPetugasController::class,'index']);
 Route::post('apps-petugas/update-avatar/{id}',[PengaturanprofilPetugasController::class,'avatar']);
+Route::get('apps-petugas/edit-profile',[PengaturanprofilPetugasController::class,'edit']);
+Route::post('proses-edit-profile-petugas/{id}',[PengaturanprofilPetugasController::class,'update']);
