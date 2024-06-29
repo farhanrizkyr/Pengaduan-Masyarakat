@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Petugas\HomePetugasController;
 use App\Http\Controllers\Petugas\ListPengaduanMasyarakatController;
@@ -79,3 +80,8 @@ Route::get('apps-petugas/profile',[PengaturanprofilPetugasController::class,'ind
 Route::post('apps-petugas/update-avatar/{id}',[PengaturanprofilPetugasController::class,'avatar']);
 Route::get('apps-petugas/edit-profile',[PengaturanprofilPetugasController::class,'edit']);
 Route::post('proses-edit-profile-petugas/{id}',[PengaturanprofilPetugasController::class,'update']);
+
+
+Route::get('admin/login',[LoginAdminController::class,'loginadmin'])->name('admin.login');
+Route::post('admin/login',[LoginAdminController::class,'post_log'])->name('proses-login-admin');
+Route::get('admin/logout',[LoginAdminController::class,'keluar_admin'])->name('logout-admin');

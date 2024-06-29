@@ -58,8 +58,22 @@ class Handler extends ExceptionHandler
 
         $route = 'login';
 
-        if ($guard == 'petugass') {
+        if ($guard == 'petugas') {
             $route = 'petugas.login';
+        }
+
+        return redirect()->route($route);
+
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        $guard = Arr::get($exception->guards(), 0);
+
+        $route = 'login';
+
+        if ($guard == 'admin') {
+            $route = 'admin.login';
         }
 
         return redirect()->route($route);
